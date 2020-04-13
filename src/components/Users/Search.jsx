@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import GithubContext from "../../Context/github/githubContext";
 
 function Search(props) {
+  const context = useContext(GithubContext);
+  console.log("this is searched context", context);
   return (
     <div>
       <form
         className="form"
         onSubmit={(e) => {
-          console.log(props);
           e.preventDefault();
-          console.log("search props", props);
-          props.filterSearchPerson();
+          context.resetState();
+          context.filterSearchPerson();
         }}
       >
         <input
@@ -18,7 +21,8 @@ function Search(props) {
           placeholder="Searching..."
           value={props.searchPerson}
           onChange={(e) => {
-            props.updateSearchPerson(e);
+            console.log(e.target.value);
+            context.updateSearchPerson(e.target.value);
           }}
         ></input>
         <input

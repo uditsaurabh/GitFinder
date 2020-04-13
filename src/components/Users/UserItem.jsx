@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 function UserItem(props) {
   let { login, avatar_url } = props.person;
-  console.log("UserItem props", props);
   return (
     <div className="card text-center">
       <img

@@ -1,17 +1,29 @@
 import "./Navbar.css";
 import PropTypes from "prop-types";
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useContext } from "react";
+import { Route } from "react-router-dom";
+import GithubContext from "../Context/github/githubContext";
 function Navbar({ icon, title }) {
+  const context = useContext(GithubContext);
   return (
     <div className="Navbar">
       <h2 style={{ float: "left" }}>
         <i className={icon}>{title}</i>
       </h2>
-      <Link to="/" style={NavStyle}>
-        Home
-      </Link>
+      <Route
+        render={({ history }) => (
+          <a
+            style={{ float: "right" }}
+            type="button"
+            onClick={() => {
+              context.resetState();
+              history.push("/");
+            }}
+          >
+            Home
+          </a>
+        )}
+      />
     </div>
   );
 }
