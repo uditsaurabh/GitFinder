@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import axios from "axios";
 import UserItem from "./UserItem";
 import SpinnerLoad from "../Spinner";
 import GithubContext from "../../Context/github/githubContext";
